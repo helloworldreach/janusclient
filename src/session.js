@@ -100,7 +100,8 @@ class Session {
     }
 
     timeout() {
-        this.destroy();
+        this.destroy()
+        .catch(e => logger.warn('Session timeout - destroy error=%s', e));
         this.emitter.emit('timeout');
     }
 
